@@ -14,5 +14,9 @@ RUN bundle install --deployment --without development test \
   && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
   && apt install -y nodejs
 
+
+# Set entrypoint's permissions to run
+RUN chmod 755 ./entrypoint.sh
+
 # Start the application server
-ENTRYPOINT ['./entrypoint.sh']
+ENTRYPOINT ./entrypoint.sh
